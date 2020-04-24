@@ -7,10 +7,11 @@ nextCells = []
 for x in range(WIDTH):
     column = [] # Create a new column.
     for y in range(HEIGHT):
-        if random.randint(0, 1) == 0:
+        if (x, y) in ((1, 0), (2, 1), (0, 2), (1, 2), (2, 2)):
+        #if random.randint(0, 1) == 0:
             column.append('#') # Add a living cell.
         else:
-            column.append(' ') # Add a dead cell.
+            column.append('.') # Add a dead cell.
     nextCells.append(column) # nextCells is a list of column lists.
 while True: # Main program loop.
     print('\n\n\n\n\n') #Separate each step with new lines.
@@ -52,10 +53,10 @@ while True: # Main program loop.
         numNeighbors == 3):
                 # Living cells with 2 or 3 neighbors stay alive:
                 nextCells[x][y] = '#'
-            elif currentCells[x][y] == ' ' and numNeighbors == 3:
+            elif currentCells[x][y] == '.' and numNeighbors == 3:
                 # Dead cells with 3 neighbors become alive:
                 nextCells[x][y] = '#'
             else:
                 # Everything else dies or stays dead:
-                nextCells[x][y] = ' '
-    time.sleep(.5) # Add a one second pause to reduce flickering.
+                nextCells[x][y] = '.'
+    time.sleep(1) # Add a one second pause to reduce flickering.
