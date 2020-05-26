@@ -1,57 +1,42 @@
+row = range(8, 0, -1)
+board = {}
+column = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
+row = ['8', '7', '6', '5', '4', '3', '2', '1']
+board_valid = 1
 
-
-
-
-# ISSUE IS WITH ASSIGN PIECES NOT SEEING A POSITIONAL ERROR
 def create_board():
-    row = range(8, 0, -1)
-    board = {}
 
-    column = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
-    row = ['8', '7', '6', '5', '4', '3', '2', '1']
     for i in column:
         for j in row:
             key = i + j
-            board[key] = ['        ']
+            board[key] = '[          ]'
     return board
 
-def flip_flag():
-    pos_error_flag = 0
-    pos_error = "BOARD NOT VALID"
-    pos_error_flag = 1
-    print(pos_error_flag, 'FLAG')
-
-
 def print_board(board):
-    if pos_error_flag == 0:
-        print(pos_error)
-    elif pos_error_flag == 1:
+    if board_valid == 0:
+        print("This board is not valid.")
+    elif board_valid == 1:
         for j in row:
             for i in column:
                 square = i + j
                 print(board[square], end='')
             print()
     else:
-        print("FORGET THIS")
+        print("You should not be here. Please go find an adult.")
 
 
 def assign_pieces(pieces):
     for piece, position in pieces.items():
-        print(piece, position, pos_error_flag)
-    flip_flag()
-    print(pos_error_flag, 'wut')
- #       board.get('i1', flip_flag())
-#        i = board.get(position)
-#
-#
- #       if position:
-  #          board[position] = piece
-   #     elif position == '':
-    #        print("captured", piece)
-     #   elif position not in board.keys:
-      #      print("Location error", piece)
-       # else:
-        #    print("error", piece)
+        if position == '':
+            print("captured", piece)
+        elif position not in board:
+            print("Location error", piece)
+            global board_valid
+            board_valid = 0
+        elif position:
+            board[position] = piece
+        else:
+            print("You should not be here. Please go find an adult.")
 
 
 pieces = {
@@ -64,7 +49,7 @@ pieces = {
     'max_pawn': 8,
     }
 w_pieces = {
-    '[  w_king  ]': 'd1', '[  w_queen ]': 'i1', #h1
+    '[  w_king  ]': 'd1', '[  w_queen ]': 'e1', #h1
     '[w_k_bishop]': 'c1', '[w_q_bishop]': 'f1',
     '[w_k_knight]': 'b1', '[w_q_knight]': 'g1',
     '[ w_k_rook ]': 'a1', '[ w_q_rook ]': 'h1',
