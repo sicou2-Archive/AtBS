@@ -120,18 +120,19 @@ class MoreGunsThanBrains:
 
 
 zombies = (
-    zombiedice.examples.RandomCoinFlipZombie(name="Random"),
-    zombiedice.examples.RollsUntilInTheLeadZombie(name="Until Leading"),
-    zombiedice.examples.MinNumShotgunsThenStopsZombie(
-        name="Stop at 2 Shotguns", minShotguns=2),
-    zombiedice.examples.MinNumShotgunsThenStopsZombie(
-        name="Stop at 1 Shotgun", minShotguns=1),
-    MyZombie(name="My Zombie Bot"),
-    RandomZombie(name="Random Zombie"),
-    TwoShotZombie(name="Two Shots Zombie"),
-    TwoBrainZombie(name="Two Brains Zombie"),
+    # zombiedice.examples.RandomCoinFlipZombie(name="Random"),
+    # zombiedice.examples.RollsUntilInTheLeadZombie(name="Until Leading"),
+    # zombiedice.examples.MinNumShotgunsThenStopsZombie(
+    #     name="Stop at 2 Shotguns", minShotguns=2),
+    # zombiedice.examples.MinNumShotgunsThenStopsZombie(
+    #     name="Stop at 1 Shotgun", minShotguns=1),
+    # MyZombie(name="My Zombie Bot"),
+    # RandomZombie(name="Random Zombie"),
+    # TwoShotZombie(name="Two Shots Zombie"),
+    # TwoBrainZombie(name="Two Brains Zombie"),
     D4Zombie(name="D4 Zombie"),
-    MoreGunsThanBrains(name="More Guns Than Brains Zombie")
+    MoreGunsThanBrains(name="More Guns Than Brains Zombie"),
+    MoreGunsThanBrains(name="Another Guns Over Brains")
     # Add any other zombie players here.
 )
 # Incomment one of the following lines to run in CLI or Web GUI mode:
