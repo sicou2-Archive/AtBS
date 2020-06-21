@@ -50,4 +50,4 @@ class DateValidator:
 
 vd = DateValidator(text)
 date = vd.date_regex()
-print(datetime.datetime.strptime(date, '%m-%d-%Y'))
+print(datetime.datetime.strptime(date, '%d-%m-%Y'))
