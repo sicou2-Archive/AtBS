@@ -1,49 +1,47 @@
 import re
 
 text = [
-    '     howdy my name is the navitron    ',
+    '    howdy my name is the navitron    ',
     'howdy my name is the navitron    ',
-    '     howdy my name is the navitron',
-    '   ojwej   '
+    '    howdy my name is the navitron',
+    '    howdy',
+    'howdy   ',
+    '    howdy    ',
+    '    ',
+    'howdy my name is the navitron howdy',
+    'howdymy name is the navitronhowdy',
+    'howdy my name is the navitron',
+    'my name is the navitron howdy',
     '',
 ]
 
-# stripped_text = []
 
-# for sentence in text:
-#     if not sentence:
-#         stripped_text.append(sentence)
-#     elif sentence:
-#         mo1 = multi_word_strip.search(sentence)
-#         if not mo1:
-#             mo2 = single_word_strip.search(sentence)
-#             stripped_text.append(mo2.group())
-#         else:
-#             stripped_text.append(mo1.group())
+def stripper(text, chars=' '):
 
-# print(stripped_text)
-
-
-def stripper(text, chars=''):
-
-    multi_word_strip = re.compile(r'(\w+\s)+(\w+)')
-    single_word_strip = re.compile(r'(\w+)')
+    f_multi_regex = f''
 
     stripped_text = []
-    if not chars:
-        for sentence in text:
-            if not sentence:
-                stripped_text.append(sentence)
-            elif sentence:
-                mo1 = multi_word_strip.search(sentence)
-                if not mo1:
-                    mo2 = single_word_strip.search(sentence)
-                    stripped_text.append(mo2.group())
+    multi_word_strip = re.compile(rf'[^{chars}](\w+\s)+(\w+)([^{chars}])')
+    single_word_strip = re.compile(rf'[^{chars}](\w+)[^{chars}]')
+
+    for sentence in text:
+        if not sentence:
+            stripped_text.append(None)
+        elif sentence:
+            mo1 = multi_word_strip.search(sentence)
+            if not mo1:
+                mo2 = single_word_strip.search(sentence)
+                if not mo2:
+                    stripped_text.append(None)
                 else:
-                    stripped_text.append(mo1.group())
-        print(stripped_text)
-
-
+                    stripped_text.append(mo2.group())
+            else:
+                stripped_text.append(mo1.group())
+    print(stripped_text)
 
 
 stripper(text)
+
+stripper(text, 'howdy ')
+
+print('   howdy my name is  navitron howdy    '.strip('howdy'))
