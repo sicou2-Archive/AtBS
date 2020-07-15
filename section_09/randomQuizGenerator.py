@@ -56,7 +56,7 @@ capitals = {
     'Wyoming': 'Cheyenne'
 }
 
-# Generate 35 quiz files/
+# Generate 35 quiz files.
 for quizNum in range(35):
     # Create the quiz and answer key files.
     quizFile = open(f'capitals_quiz/capitalsquiz{quizNum + 1}.txt', 'w')
@@ -75,18 +75,17 @@ for quizNum in range(35):
         correctAnswer = capitals[states[questionNum]]
         wrongAnswers = list(capitals.values())
         del wrongAnswers[wrongAnswers.index(correctAnswer)]
-        wrongsAnswers = random.sample(wrongAnswers, 3)
+        wrongAnswers = random.sample(wrongAnswers, 3)
         answerOptions = wrongAnswers + [correctAnswer]
         random.shuffle(answerOptions)
         # Write the question and answer optios to the quiz file.
         quizFile.write(
             f'{questionNum+1}. What is the capital of {states[questionNum]}?\n')
-
         for i in range(4):
             quizFile.write(f"    {'ABCD'[i]}. { answerOptions[i]}\n")
         quizFile.write('\n')
         # Write the answer key to a file.
         answerKeyFile.write(
-            f"{questionNum + 1}. {'ABCD'[answerOptions.index(correctAnswer)]}")
+            f"{questionNum + 1}. {'ABCD'[answerOptions.index(correctAnswer)]}\n")
     quizFile.close()
     answerKeyFile.close()
